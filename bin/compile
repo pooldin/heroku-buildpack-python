@@ -205,8 +205,9 @@ if (grep -Fiq "hg+" requirements.txt) then
 fi
 
 # Install dependencies with Pip.
-puts-step "Installing dependencies using pip version $(pip --version | awk '{print $2}')"
-pip install --use-mirrors -r requirements.txt --exists-action=w --src=./.heroku/src | indent
+#puts-step "Installing dependencies using pip version $(pip --version | awk '{print $2}')"
+#pip install --use-mirrors -r requirements.txt --exists-action=w --src=./.heroku/src | indent
+$PYTHON_EXE setup.py develop
 
 # Do additional application hackery if applications appears to be a Django app.
 # Optionally, disable all Django-specific changes with `DISABLE_INJECTION` env.
